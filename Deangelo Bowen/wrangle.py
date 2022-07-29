@@ -23,7 +23,7 @@ def get_perpetrator_df():
     df['date'] = pd.to_datetime(df.year.astype(str) + '/' + df.month.astype(str) + '/' + df.day.astype(str))
     
     # drops uneeeded columns
-    df = df.drop(columns={'Unnamed: 0', 'Unnamed: 0.1', 'year', 'month', 'day'})
+    df = df.drop(columns={'Unnamed: 0', 'Unnamed: 0.1'})
     
     # set index
     df = df.set_index('date')
