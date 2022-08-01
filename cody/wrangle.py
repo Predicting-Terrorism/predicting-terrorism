@@ -35,7 +35,7 @@ def prep_df(df):
     return df
 
 
-    def split_data(df):
+def split_data(df):
     '''
     Takes in a cleaned dataframe, splits it into train, validate and test subgroups and then returns those subgroups.
     Arguments: df - a cleaned pandas dataframe with the expected feature names and columns in a dataset
