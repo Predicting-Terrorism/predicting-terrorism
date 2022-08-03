@@ -1,5 +1,7 @@
 import pandas as pd     
 import os
+from sklearn.model_selection import train_test_split
+
 
 def get_terrorism_data():
     ''' 
@@ -33,3 +35,18 @@ def prep_df(df):
     df.nationality = df.nationality.apply(str.lower)
     df.atk_group = df.atk_group.apply(str.lower)
     return df
+
+
+def split_data(df):
+    '''
+    Takes in a cleaned dataframe, splits it into train, validate and test subgroups and then returns those subgroups.
+    Arguments: df - a cleaned pandas dataframe with the expected feature names and columns in a dataset
+    Return: train, validate, test - dataframes ready for the exploration and model phases.
+    '''
+
+    train_validate, test = train_test_split(df, test_size=.2, 
+        random_state=17)
+
+    train, validate = train_test_split(train_validate, test_size=.3, 
+        random_state=17)
+    return train, validate, test
