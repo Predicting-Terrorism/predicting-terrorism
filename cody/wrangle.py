@@ -50,3 +50,25 @@ def split_data(df):
     train, validate = train_test_split(train_validate, test_size=.3, 
         random_state=17)
     return train, validate, test
+
+
+
+
+    ###############################################
+
+    ## download big csv as terrorism.csv
+
+
+file = 'terrorism.csv'
+df = pd.read_csv(file, encoding='cp1252')
+
+df_date = df[df.iyear > 2000]
+
+middle_east_countries = ['bahrain', 'cyprus', 'egypt', 'iran', 'iraq', 'israel', 'jordan', 'kuwait', 'lebanon', 'oman', 'palestine', 'qatar', 'saudi arabia', 'syria', 'afghanistan'
+                        , 'djibouti', 'turkey', 'maghreb', 'pakistan', 'sudan', 'somalia']
+
+
+
+filtered_df = df_date[df_date['country_txt'].isin(middle_east_countries)]
+
+filtered_df.to_csv('filtered_terrorism_df.csv')
