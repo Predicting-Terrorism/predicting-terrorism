@@ -59,16 +59,16 @@ def split_data(df):
     ## download big csv as terrorism.csv
 
 
-file = 'terrorism.csv'
-df = pd.read_csv(file, encoding='cp1252')
+# file = 'terrorism.csv'
+# df = pd.read_csv(file, encoding='cp1252')
 
-df_date = df[df.iyear > 2000]
+# df_date = df[df.iyear > 2000]
 
-middle_east_countries = ['bahrain', 'cyprus', 'egypt', 'iran', 'iraq', 'israel', 'jordan', 'kuwait', 'lebanon', 'oman', 'palestine', 'qatar', 'saudi arabia', 'syria', 'afghanistan'
-                        , 'djibouti', 'turkey', 'maghreb', 'pakistan', 'sudan', 'somalia']
+# middle_east_countries = ['bahrain', 'cyprus', 'egypt', 'iran', 'iraq', 'israel', 'jordan', 'kuwait', 'lebanon', 'oman', 'palestine', 'qatar', 'saudi arabia', 'syria', 'afghanistan'
+#                         , 'djibouti', 'turkey', 'maghreb', 'pakistan', 'sudan', 'somalia']
 
 
 
-filtered_df = df_date[df_date['country_txt'].isin(middle_east_countries)]
+# filtered_df = df_date[df_date['country_txt'].isin(middle_east_countries)]
 
-filtered_df.to_csv('filtered_terrorism_df.csv')
+# filtered_df.to_csv('filtered_terrorism_df.csv')
