@@ -236,6 +236,77 @@ def weapon_terrorist_relationship_test(train):
 
 
 
+def model_data():
+    df = wrangle.create_terrorism_df()
+    cols_to_drop =['eventid',
+     'year',
+     'month',
+     'day',
+     'country',
+     'region',
+     'provstate',
+     'city',
+     'latitude',
+     'longitude',
+     'success',
+     'suicide',
+     'attack_type',
+     'targ_desc',
+     'targeted_group',
+     'tg_desc',
+     'nationality',
+     'atk_group',
+     'claimed',
+     'weap_type',
+     'weap_sub',
+     'killed',
+     'us_killed',
+     'ter_killed',
+     'wounded',
+     'us_wounded',
+     'ter_wounded',
+     'property']
+    
+    df3 = df.drop(cols_to_drop, axis = 1)
+    
+    bottom_targ_groups = df3.target.value_counts().index.to_list()
+    
+    bottom_targ_groups = bottom_targ_groups[4:]
+    
+    df3.target = df3.target.replace(bottom_targ_groups, 'other')
+    
+    data = pd.read_csv('modeling_df.csv')
+    
+    data.month = df.month.astype('str')
+    
+    data.year = df.year.astype('str')
+    
+    data = data.drop(columns = 'Unnamed: 0')
+    
+    df3 = df3.reset_index()
+
+    df3 = df3.drop(columns = 'index')
+    
+    dummy_df = pd.get_dummies(data[['Cluster',
+                               'provstate',
+                                'year',
+                                'suicide',
+                                'country',
+                                'city',
+                                'property',
+                              'nationality',
+                              'month',
+                              'attack_type',
+                              'atk_group', 
+                              'weap_type',
+                              'weap_sub']], dummy_na=False, drop_first=[True, True])
+   
+    df_trial2 = pd.concat([df3, dummy_df], axis = 1)
+    
+    #split the data
+    encoded_train, encoded_validate, encoded_test = wrangle.split_data(df_trial2)
+    
+    return encoded_train, encoded_validate, encoded_test
 
 
 
