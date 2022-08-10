@@ -1,6 +1,6 @@
 # Predicting Terrorism in the Middle East
 
-## Final Presentation <--- link to google slides
+## Final Presentation <--- link 
 
 ## Project Overview: 
 - This project takes an in depth look at terrorism in Middle Eastern countries and how it has evolved since 2001. In this project, my team and I analyze information from the Global Terrorism Database and build machine learning models to determine what groups are most at risk of being attacked in the Middle East, as well as attempt to accredit previously unattributed attacks.
@@ -79,4 +79,20 @@
 | property | binary indicator of whether or not property was involved in the attack|
 
 ## Conclusion
+-We were able to maneuver through 2001 and 2017 terrorism data to find out:
+  - Who was most at rist of terrorist attacks
+  - Who were the most likely perpetrators of the unattributed attacks
+- To do this, we created an array of Machine Learning models which ultimately lead to the Decision Tree Classifier and Random Forest yielding the best results. 
 
+- In regards to finding "Who were most at risk of terrorist attacks" and the Random Forest Model we achieved:
+  - 52% Accuracy on Training In-Sample Data
+  - 47% Accuracy on Test Out-of-Sample Data
+
+- As for the finding "Who were most likely the perpetrators of unattributed attacks, we achieved:
+  - 94% Accuracy on Training In-Sample Data
+  - 93% Accuracy on Test Out-of-Sample Data
+
+## Our Next Steps:
+  - We find benefit in fitting more terrorist groups in our model for discovering the perpetrators of unattributed attacks as, while generally accurate, could use the features for better decision making and precision. 
+
+  - Lastly, To take this project further, we would like to recreate the project on the scale of Global Terrorism. 
