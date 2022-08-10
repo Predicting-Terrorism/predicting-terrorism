@@ -79,7 +79,7 @@
 | property | binary indicator of whether or not property was involved in the attack|
 
 ## Conclusion
--We were able to maneuver through 2001 and 2017 terrorism data to find out:
+- We were able to maneuver through 2001 and 2017 terrorism data to find out:
   - Who was most at rist of terrorist attacks
   - Who were the most likely perpetrators of the unattributed attacks
 - To do this, we created an array of Machine Learning models which ultimately lead to the Decision Tree Classifier and Random Forest yielding the best results. 
