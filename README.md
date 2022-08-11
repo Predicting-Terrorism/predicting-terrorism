@@ -1,6 +1,6 @@
 # Predicting Terrorism in the Middle East
 
-## [Final Presentation ]([(https://public.tableau.com/app/profile/frederik.n.lindsey/viz/terrorism_attribution_captstone_viz/Predictors)]) 
+## [Final Presentation ](https://public.tableau.com/app/profile/frederik.n.lindsey/viz/terrorism_attribution_captstone_viz/Predictors) 
 
 ## Project Overview: 
 - This project takes an in depth look at terrorism in Middle Eastern countries and how it has evolved since 2001. In this project, my team and I analyze information from the Global Terrorism Database and build machine learning models to determine what groups are most at risk of being attacked in the Middle East, as well as attempt to accredit previously unattributed attacks.
