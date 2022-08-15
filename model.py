@@ -114,7 +114,8 @@ def create_model_df():
 
 
 def loop_boop(data, production_df):  
-    
+    ''' This function takes in 2 dataframes and
+    '''
     i = 4
     while i > 0:
         y1 = set(production_df['provstate'])
@@ -172,6 +173,8 @@ def scaling_func(data):
 
 
 def dummy_df(data, gnames, nkills):   
+    ''' This function takes in columns from a df and creates dummy variables based on the values of those columns.
+    '''
     dummy_df = pd.get_dummies(data[['country',
                                         'provstate',
                                         'city',
