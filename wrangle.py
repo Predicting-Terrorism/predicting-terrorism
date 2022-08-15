@@ -38,6 +38,8 @@ def prep_df(df):
 
 
 def create_terrorism_df():
+    ''' This function creates and prepares the terrorism df based off of the get terrorism data and the prep df functions.
+    '''
     df = get_terrorism_data()
     df = prep_df(df)
     return df
@@ -60,7 +62,8 @@ def split_data(df):
 
 
 def get_perpetrator_df():
-    
+    '''This functions creates a perpetrator dataframe based on the groups of the original df.
+    '''
     
     #obtains data and sets to dataframe.
     df = pd.read_csv('final_df.csv')
