@@ -2,7 +2,7 @@
 
 ## [Tableau Dashboard ](https://public.tableau.com/app/profile/frederik.n.lindsey/viz/terrorism_attribution_captstone_viz/Predictors)
 
-## [Slides Presentation]([https://www.canva.com/design/DAFJBi0N9_8/q88kK9TFrsg4BweGcjYEmg/edit](https://www.canva.com/design/DAFJBi0N9_8/aftWCPTaPKlR9_mP5NxwyA/view?utm_content=DAFJBi0N9_8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink))
+## [Slides Presentation](https://www.canva.com/design/DAFJBi0N9_8/aftWCPTaPKlR9_mP5NxwyA/view?utm_content=DAFJBi0N9_8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 ## Project Overview: 
 - This project takes an in depth look at terrorism in Middle Eastern countries and how it has evolved since 2001. In this project, my team and I analyze information from the Global Terrorism Database and build machine learning models to determine what groups are most at risk of being attacked in the Middle East, as well as attempt to accredit previously unattributed attacks.
