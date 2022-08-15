@@ -1,6 +1,6 @@
 # Predicting Terrorism in the Middle East
 
-## [Tableau Dashboard ](https://public.tableau.com/app/profile/frederik.n.lindsey/viz/terrorism_attribution_captstone_viz/Predictors)
+## [Tableau Dashboard ](https://public.tableau.com/app/profile/frederik.n.lindsey/viz/terrorism_attribution_captstone_viz/FinalPresentation)
 
 ## [Slides Presentation](https://www.canva.com/design/DAFJBi0N9_8/aftWCPTaPKlR9_mP5NxwyA/view?utm_content=DAFJBi0N9_8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
@@ -89,6 +89,7 @@
 - In regards to finding "Who were most at risk of terrorist attacks" and the Random Forest Model we achieved:
   - 52% Accuracy on Training In-Sample Data
   - 47% Accuracy on Test Out-of-Sample Data
+  - 75% Increase on baseline
 
 - As for the finding "Who were most likely the perpetrators of unattributed attacks, we achieved:
   - 94% Accuracy on Training In-Sample Data
