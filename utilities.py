@@ -20,6 +20,8 @@ warnings.filterwarnings("ignore")
 
 
 def attacks_by_year(df):
+    ''' This functions creates a histogram based on the year column of the terrorist df.
+    '''
 	fig = px.histogram(
     df, 
     x = 'year',
@@ -29,6 +31,8 @@ def attacks_by_year(df):
 
 
 def top_groups(df):
+    ''' This function takes in a df and returns a filtered df of only the top 20 terrorist organizations.
+    '''
 	# create a df of the top 20 groups with their number of attacks
 	top_groups = pd.DataFrame(df.atk_group.value_counts().head(20))
 	# create a list of the top 20 groups
@@ -40,6 +44,8 @@ def top_groups(df):
 
 
 def attacks_by_group_by_year(df):
+    ''' This function creates a histogram of the number of attacks by year by group.
+    '''
 	df_top = top_groups(df)
 	color_discrete_map = {'unknown': '#006ba4'}
 	fig = px.histogram(
@@ -58,6 +64,8 @@ def attacks_by_group_by_year(df):
 
 
 def killed_by_group_by_year(df):
+    ''' This function creates a barchart of the number of people killed each year by individual terrorist groups. 
+    '''
 	df_top = top_groups(df)
 	fig = px.bar(df_top, x="atk_group",y = 'killed', title='Killed by Group by Year', 
                 labels={'count':'Number of Reported Attacks'}, animation_frame='year', color="country",
@@ -89,12 +97,16 @@ def killed_by_group_by_year(df):
 
 
 def country_attack_graph(df):
+    ''' This function shows the number of terrorist incidents each year by country
+    '''
 	fig = px.histogram(df.country)
 	return fig.show()
 
 
 
 def groups_by_country(df):
+    ''' This function shows the number of terrorist attacks by different terrorist organizations, split by country.
+    '''
 	df_top = top_groups(df)
 	fig = px.histogram(df_top, x="country", title='Killed by Group by Year', 
                 labels={'count':'Number of Reported Attacks'}, color="atk_group",
@@ -126,6 +138,8 @@ def groups_by_country(df):
 
 
 def country_group_test(train): 
+    ''' This function is a chi2 test to determine if there is a relationship between country and attack group. 
+    '''
     alpha = .05
 
     target_table = pd.crosstab(train.country, train.atk_group)
@@ -144,6 +158,8 @@ def country_group_test(train):
 
 
 def get_country_dict(train): 
+    ''' This function creates dictionaries based on the different countries of the df. 
+    '''
 	# create a dictionary of the different countries
 	country_dict = {}
 	countries = train.country.unique()
@@ -155,7 +171,8 @@ def get_country_dict(train):
 
 
 def attack_graph(dict): 
-    # create a histogram of the top groups over the time frame
+    ''' This function creates a histogram of the top groups being attacked
+    '''
     color_discrete_map = {'unknown': '#006ba4'}
     fig = px.histogram(
         dict, 
@@ -169,6 +186,8 @@ def attack_graph(dict):
 
 
 def overall_attack_graph(dict): 
+    ''' This function creates a histgram of the top groups being attacked over time.
+    '''
     # create a histogram of the top groups over the time frame
     color_discrete_map = {'unknown': '#006ba4'}
     fig = px.histogram(
@@ -182,7 +201,9 @@ def overall_attack_graph(dict):
     return fig.show()
 
 
-def target_terrorist_relationship_test(train): 
+def target_terrorist_relationship_test(train):
+ ''' This function is a chi2 test to determine if there is a statistical relationship between targets and terrorist organizations.
+ '''
     alpha = .05
 
     target_table = pd.crosstab(train.target, train.atk_group)
@@ -200,16 +221,22 @@ def target_terrorist_relationship_test(train):
 
 
 def wounded_by_year(train):
+    ''' This function creates a scatter plot that shows the relationship between the year, wounded, weapons used columns.
+    '''
 	fig = px.scatter(train, x = 'year', y = 'wounded', color = 'weap_type', size = 'wounded', title = 'Wounded by Year' )
 	return fig.show()
 
 
 def killed_by_year(train):
+    ''' This function creates a scatter plot that shows the relationship between the year, killed, weapons used columns.
+    '''
 	fig = px.scatter(train, x = 'year', y = 'killed', color = 'weap_type', size = 'killed', title = 'Killed by Year' )
 	return fig.show()
 
 
 def weapon_terrorist_relationship_test(train): 
+    ''' This function is a chi2 test that is used to determine the relationship between terrorist organizations and the weapons used. 
+    '''
     alpha = .05
 
     target_table = pd.crosstab(train.weap_type, train.atk_group)
@@ -237,7 +264,11 @@ def weapon_terrorist_relationship_test(train):
 
 
 def model_data():
+    ''' This function is used to create a df for modeling.
+    '''
+    #create the df
     df = wrangle.create_terrorism_df()
+    # establish what columns will be dropped
     cols_to_drop =['eventid',
      'year',
      'month',
@@ -267,26 +298,27 @@ def model_data():
      'ter_wounded',
      'property']
     
+    #establish a second df only target variable
     df3 = df.drop(cols_to_drop, axis = 1)
-    
+    # create a list of all targeted groups
     bottom_targ_groups = df3.target.value_counts().index.to_list()
-    
+    # filter list to not include the top 4 most targeted groups
     bottom_targ_groups = bottom_targ_groups[4:]
-    
+    # replace values in list with other in the df3 dataframe
     df3.target = df3.target.replace(bottom_targ_groups, 'other')
-    
+    # call in modeling csv
     data = pd.read_csv('modeling_df.csv')
-    
+    # change dtype of month to a string
     data.month = df.month.astype('str')
-    
+    # change dtype of year to a string
     data.year = df.year.astype('str')
-    
+    # drop unnamed column
     data = data.drop(columns = 'Unnamed: 0')
-    
+    # reset the index
     df3 = df3.reset_index()
-
+    # drop index column
     df3 = df3.drop(columns = 'index')
-    
+    # create a dummy df
     dummy_df = pd.get_dummies(data[['Cluster',
                                'provstate',
                                 'year',
@@ -301,6 +333,7 @@ def model_data():
                               'weap_type',
                               'weap_sub']], dummy_na=False, drop_first=[True, True])
    
+    # concat the df3 and dummy df
     df_trial2 = pd.concat([df3, dummy_df], axis = 1)
     
     #split the data
