@@ -19,6 +19,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
+
 def attacks_by_year(df):
     ''' 
     This function creates a histogram based on the year column of the terrorist df
